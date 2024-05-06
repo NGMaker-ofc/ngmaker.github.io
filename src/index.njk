@@ -1,0 +1,80 @@
+---
+title: Home
+layout: base
+---
+<main class="font-oswald">
+  <header class="flex flex-col justify-between items-center p-2 bg-gradient-to-br from-orange-500/90 to-orange-400/90 backdrop-blur-sm sticky top-0 z-10 md:flex-row">
+    <a href="{{ meta.url }}" class="text-3xl text-white">{{ meta.siteName }}</a>
+    <nav class="flex flex-row gap-3 mt-2 items-center md:mt-0">
+      <a class="text-lg px-3 py-2 bg-black/50 text-white hover:bg-black/80 rounded-lg backdrop-blur-sm transition-all hover:scale-105" href="#intro">Home</a>
+      <a class="text-lg px-3 py-2 bg-black/50 text-white hover:bg-black/80 rounded-lg backdrop-blur-sm transition-all hover:scale-105" href="#projects">Projetos</a>
+      <a class="text-lg px-3 py-2 bg-black/50 text-white hover:bg-black/80 rounded-lg backdrop-blur-sm transition-all hover:scale-105" href="#aboutMe">Quem sou eu</a>
+      <a class="text-lg px-3 py-2 bg-black/50 text-white hover:bg-black/80 rounded-lg backdrop-blur-sm transition-all hover:scale-105" href="#contact">Contato</a>
+    </nav>
+  </header>
+    <section id="intro" class="text-white bg-[url('/assets/images/intro.webp')] bg-cover bg-center">
+      <div class="container mx-auto h-screen flex flex-col justify-center items-center bg-black/70">
+        <h1 class="p-2 text-7xl font-bold mb-3">{{ meta.siteName }}</h1>
+        <p class="text-4xl">A solução!</p>
+        <br>
+        <a href="#projects" class="text-lg p-3 bg-black/50 text-white hover:bg-black/80 rounded-lg backdrop-blur-sm transition-all hover:scale-105">Conheça nossos projetos</a>
+      </div>
+    </section>
+  
+    <section id="projects" class="bg-gradient-to-br from-orange-500 to-orange-400 p-5">
+      <div class="container mx-auto md:max-w-3xl lg:max-w-5xl">
+        <p class="pt-2 text-center text-lg">Nossos</p>
+        <h1 class="text-center text-4xl font-bold">Projetos</h1>
+        <br>
+        <div class="grid grid-cols-1 gap-4 place-items-center md:grid-cols-2 lg:grid-cols-3">
+        {% for project in meta.projects %}
+        <div class="bg-white/80 transition-all backdrop-blur-sm hover:scale-105 hover:shadow-sm max-w-fit">
+          <a target="_blank" href="{{ project.link }}">
+            <div>
+                <img width="330px" height="330px" src="{{ meta.url }}{{ project.src }}" alt="{{ project.title }}" class="object-cover">
+            </div>
+            <div>
+              <h2 class="text-2xl text-center p-2 font-bold">{{ project.title }}</h2>
+              <p class="text-lg text-center p-1 mb-3">{{ project.description }}</p>
+            </div>
+          </a>
+        </div>
+        {% endfor %}
+        </div>
+      </div>
+    </section>
+  
+    <section id="aboutMe" class="bg-slate-50 p-5 mb-4">
+      <div class="container mx-auto max-w-5xl">
+        <h1 class="p-3 text-center text-4xl font-bold">Quem sou eu</h1>
+        <div class="flex flex-col items-center justify-center max-w-screen-sm mx-auto mt-3 md:flex-row">
+            <img width="218px" height="218px" src="{{ meta.url }}{{ meta.author.avatar }}" alt="{{ meta.author.name }}" class="rounded-full max-w-52 shadow-xl object-cover border-4 hover:scale-105 transition-all">
+            <div class="p-5">
+              <a href="{{ meta.author.instagram }}" target="_blank">
+                <h2 class="text-center md:text-left text-2xl font-bold">{{ meta.author.name }}</h2>
+              </a>
+              <p class="text-justify my-5 mx-0">{{ meta.author.bio }}</p>
+            </div>
+        </div>
+      </div>
+    </section>
+  
+    <section id="contact" class="bg-black text-white p-5">
+      <div class="container mx-auto flex flex-col items-center justify-center max-w-lg">
+        <h1 class="p-2 text-4xl font-bold">Contato</h1>
+        <p class="text-center">{{ meta.contactMessage }}</p>
+        <br>
+        <div class="flex flex-col items-center justify-center transition-all hover:scale-105">
+          <a href="https://api.whatsapp.com/send?phone={{ meta.whatsapp | replace('+','') | replace('(', '') | replace(')', '') | replace(' ', '') | replace('-', '') }}&text=Ol%C3%A1,%20vim%20pelo%20site." target="_blank">
+            <img src="{{ meta.url }}/assets/images/icons/whatsapp.svg" alt="WhatsApp" height="100px" width="100px" class="max-w-24 mx-auto">
+            <p class="my-4">{{ meta.whatsapp }}</p>
+          </a>
+        </div>
+      </div>
+    </section>
+  
+  
+  <footer class="text-center bg-gradient-to-br from-orange-500 to-orange-400 text-white">
+    <p class="text-lg p-2">&copy; {{ meta.siteName }} - 2024 -   <a href="https://lzart.com.br" target="_blank" class="hover:underline">Desenvolvido por LZArt &trade;</a></p>
+  </footer>
+</main>

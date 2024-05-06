@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth scroll-pt-20 md:scroll-pt-14">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Primary Meta Tags -->
+  <title>{{ title }} | {{ meta.siteName }}</title>
+  <meta name="title" content="{{ title }}" />
+  <meta name="description" content="{{ meta.description }}" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="{{ meta.url }}" />
+  <meta property="og:title" content="{{ title }}" />
+  <meta property="og:description" content="{{ meta.description }}" />
+  <meta property="og:image" content="https://metatags.io/images/meta-tags.png" />
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:url" content="{{ meta.url }}" />
+  <meta property="twitter:title" content="{{ title }}" />
+  <meta property="twitter:description" content="{{ meta.description }}" />
+  <meta property="twitter:image" content="https://metatags.io/images/meta-tags.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+
+
+  <link rel="stylesheet" href="{{ meta.url }}/assets/css/tailwind.css">
+</head>
+<body class="bg-gradient-to-br from-orange-500 to-orange-400">
+  {{ content | safe }}
+  <script src="{{ meta.url }}/assets/js/script.js"></script>
+</body>
+</html>
